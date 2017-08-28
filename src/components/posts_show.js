@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fecthPost } from '../actions';
 
-class PostShow extends Component {
+class PostsShow extends Component {
+
+    componentDidMount() {
+        const { id } = this.props.match.params;
+        this.props.fecthPost(id);
+    }
+
     render() {
+        this.props.post;
         return (
             <div>
               post show!  
@@ -10,4 +19,8 @@ class PostShow extends Component {
     }
 }
 
-export default PostShow;
+const mapStateToProps = ({ posts }, ownProps) => ({
+   post: posts[ownProps.match.params.id]
+});
+
+export default connect(mapStateToProps, { fecthPost })(PostsShow);
