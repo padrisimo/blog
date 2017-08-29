@@ -21,7 +21,11 @@ class PostsShow extends Component {
         const { post } = this.props;
 
         if (!post) {
-            return <div>Loading...</div>;
+            return (
+                <div className="m-t-2">
+                    Loading...
+                </div>
+            );
         }
 
         return (
